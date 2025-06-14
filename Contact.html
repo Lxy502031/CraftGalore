@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Crafts Galore</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Swiper CSS (needed in case you reuse slideshow or use Swiper styles) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">Crafts Galore</div>
+  <div class="navbar">
+    <button class="menu-toggle">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <h2 style="text-align:center; margin-top: 30px;">Contact Us</h2>
+  <section class="contact-form" style="display: flex; justify-content: center; margin: 30px;">
+    <form id="contactForm" action="https://formspree.io/f/xnndebpy" method="POST" style="background:white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 500px; width: 100%;">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%; margin-bottom:15px; padding:10px;">
+      <input type="email" name="email" placeholder="Your Email" required style="width:100%; margin-bottom:15px; padding:10px;">
+      <input type="text" name="subject" placeholder="Subject" required style="width:100%; margin-bottom:15px; padding:10px;">
+      <textarea name="message" placeholder="Your Message" rows="5" required style="width:100%; margin-bottom:15px; padding:10px;"></textarea>
+      <button type="submit" class="btn" style="width:100%;">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Crafts Galore. All rights reserved.</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submit (to handle manually)
+    
+    const data = new FormData(form);
+    
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        alert("Your message has been sent!");
+        form.reset(); // This resets the form fields
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+      }
+    }).catch(error => {
+      alert("Oops! There was a problem submitting your form.");
+    });
+  });
+</script>
+</body>
+</html>
