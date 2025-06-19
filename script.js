@@ -106,19 +106,31 @@ const modalContent = document.getElementById('modal-details');
 const closeBtn = document.querySelector('.close-btn');
 
 const productInfo = {
-  product1: `<h3>Winnie the Pooh Keychain</h3><p>Durable. Great for daily use or gifting.</p>`,
-  product2: `<h3>Minion Keychain</h3><p>Handmade. Perfect for backpacks and gifts.</p>`,
-  product3: `<h3>Classic Tote Bag</h3><p>Hand-crocheted tote bag with a spacious design — perfect for daily use or shopping.</p>`,
-  product4: `<h3>Canvas Shoulder Bag</h3><p>Stylish crocheted shoulder bag, lightweight yet sturdy — great for casual outings.</p>`
+  keychains: {
+    minion: `<h3>Minion Keychain</h3><p>Handmade. Perfect for backpacks and gifts.</p>`,
+    winnie: `<h3>Winnie the Pooh Keychain</h3><p>Durable. Great for daily use or gifting.</p>`,
+    bird: `<h3>Bird Keychain</h3><p>Handmade keychain, eco-friendly and stylish — ideal for bags or everyday use.</p>`
+  },
+  bags: {
+    tote: `<h3>Classic Tote Bag</h3><p>Hand-crocheted tote bag with a spacious design — perfect for daily use or shopping.</p>`,
+    canvas: `<h3>Canvas Shoulder Bag</h3><p>Stylish crocheted shoulder bag, lightweight yet sturdy — great for casual outings.</p>`
+  }
 };
-
 document.querySelectorAll('.more-info-btn').forEach(button => {
   button.addEventListener('click', () => {
-    const id = button.getAttribute('data-product');
-    modalContent.innerHTML = productInfo[id] || '<p>Info not found.</p>';
+    const category = button.getAttribute('data-category');
+    const product = button.getAttribute('data-product');
+
+    if (productInfo[category] && productInfo[category][product]) {
+      modalContent.innerHTML = productInfo[category][product];
+    } else {
+      modalContent.innerHTML = '<p>Info not found.</p>';
+    }
+
     modal.classList.remove('hidden');
   });
 });
+
 
 closeBtn.addEventListener('click', () => {
   modal.classList.add('hidden');
