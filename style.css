@@ -56,6 +56,8 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-bottom: 2px solid var(--accent-color); /* Match footer’s separator */
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .header-content {
@@ -71,6 +73,7 @@ body::before {
   font-size: 24px;
   font-weight: bold;
   gap: 10px;
+  color: var(--accent-color);
 }
 
 .navbar {
@@ -92,7 +95,7 @@ body::before {
   font-weight: 500;
   padding: 8px 12px;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-links li a:hover {
@@ -105,6 +108,7 @@ body::before {
   border: none;
   font-size: 24px;
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .search-bar input {
@@ -318,21 +322,97 @@ body::before {
 footer,
 .site-footer {
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
   background-color: var(--header-bg);
   margin-top: 40px;
+  color: var(--text-color);
+  border-top: 2px solid var(--accent-color); /* Adds a visual separator from the page */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-section {
+  min-width: 150px;
+  flex: 1;
+  text-align: left; /* Makes it look more structured */
+}
+
+.footer-section h4 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--accent-color); /* Underline the section header */
+  padding-bottom: 5px;
+}
+
+.footer-section a {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 6px 0;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-section a:hover {
+  color: var(--accent-color);
+  transform: translateX(5px); /* Adds a slight shift on hover */
+}
+
+.social-icons {
+  margin-top: 10px;
 }
 
 .social-icons a {
   color: var(--text-color);
   font-size: 20px;
   margin: 0 10px;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
   color: var(--accent-color);
+  transform: scale(1.2); /* Slight zoom on hover */
 }
+
+.footer-bottom {
+  border-top: 1px solid var(--accent-color);
+  padding-top: 10px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .footer-sections {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section h4 {
+    border-bottom: none;
+  }
+}
+
 
 /* Headings */
 h2 {
@@ -454,20 +534,31 @@ h2 {
 
 /* Responsive - Mobile Adjustments */
 @media (max-width: 768px) {
-  /* Mobile Navbar */
+  /* Header layout */
+  .main-header,
+  .header-content,
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 50px;
     left: 0;
-    background: white;
-    padding: 10px 0;
+    background: var(--white);
+    padding: 10px 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px var(--shadow);
+    width: 200px;
     z-index: 999;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 200px;
   }
 
   .nav-links.active {
@@ -476,37 +567,25 @@ h2 {
 
   .nav-links li {
     width: 100%;
-    text-align: center;
+    text-align: left;
     padding: 10px 0;
   }
 
-  .menu-toggle {
+  .nav-links li a {
     display: block;
+    width: 100%;
   }
 
-  .search-bar input {
+  .search-bar {
     width: 100%;
     margin-top: 10px;
   }
 
-  .products {
-    padding: 20px 10px;
+  .search-bar input {
+    width: 100%;
   }
 
-  .product {
-    width: 90%;
-  }
-
-  /* Swiper Mobile Adjustments */
-  .swiper-container {
-    aspect-ratio: 4 / 3;
-    height: auto;
-  }
-
-  .swiper-slide img {
-    object-fit: contain;
-  }
-
+  /* Hero adjustments */
   .hero-overlay {
     padding: 15px;
     max-width: 90%;
@@ -524,20 +603,92 @@ h2 {
     padding: 8px 16px;
     font-size: 14px;
   }
-}
-/* Contact Form Mobile Adjustments */
+
+  /* Products layout */
+  .products {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .product {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Swiper adjustments */
+  .swiper-container {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .swiper-slide img {
+    object-fit: contain;
+    max-height: 180px;
+  }
+
+  /* Product gallery fix */
+  .product-gallery {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Contact form spacing */
+  .contact-form {
+    padding: 0 10px;
+  }
+
   .contact-form form {
+    width: 100%;
+  }
+
+  /* Footer layout */
+  .footer-sections {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-section h4 {
+    border-bottom: none;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+    margin: 0 5px;
+  }
+
+  footer,
+  .site-footer {
+    font-size: 14px;
     padding: 15px;
   }
+}
 
-  .contact-form input,
-  .contact-form textarea {
-    padding: 8px;
+/* Tiny screen tweaks */
+@media (max-width: 480px) {
+  .hero-overlay h1 {
+    font-size: 18px;
   }
 
-  .contact-form button.btn {
-    padding: 8px;
+  .hero-overlay p {
+    font-size: 12px;
   }
+
+  .products {
+    gap: 20px;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+}
+
 
   /* Footer */
   footer,
@@ -644,4 +795,7 @@ h2 {
 .product-gallery button.custom-swiper-button-next {
   right: 8px;
 }
+
+
+
 
