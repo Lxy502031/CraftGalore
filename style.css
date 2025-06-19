@@ -108,7 +108,7 @@ body::before {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: var(--text-color);
+  
 }
 
 .search-bar input {
@@ -534,31 +534,20 @@ h2 {
 
 /* Responsive - Mobile Adjustments */
 @media (max-width: 768px) {
-  /* Header layout */
-  .main-header,
-  .header-content,
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
+  /* Mobile Navbar */
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 50px;
     left: 0;
-    background: var(--white);
-    padding: 10px 20px;
-    border-radius: 10px;
+    background: white;
+    padding: 10px 0;
     box-shadow: 0 4px 8px var(--shadow);
-    width: 200px;
     z-index: 999;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
   }
 
   .nav-links.active {
@@ -567,25 +556,37 @@ h2 {
 
   .nav-links li {
     width: 100%;
-    text-align: left;
+    text-align: center;
     padding: 10px 0;
   }
 
-  .nav-links li a {
+  .menu-toggle {
     display: block;
-    width: 100%;
-  }
-
-  .search-bar {
-    width: 100%;
-    margin-top: 10px;
   }
 
   .search-bar input {
     width: 100%;
+    margin-top: 10px;
   }
 
-  /* Hero adjustments */
+  .products {
+    padding: 20px 10px;
+  }
+
+  .product {
+    width: 90%;
+  }
+
+  /* Swiper Mobile Adjustments */
+  .swiper-container {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .swiper-slide img {
+    object-fit: contain;
+  }
+
   .hero-overlay {
     padding: 15px;
     max-width: 90%;
@@ -603,92 +604,20 @@ h2 {
     padding: 8px 16px;
     font-size: 14px;
   }
-
-  /* Products layout */
-  .products {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .product {
-    width: 90%;
-    max-width: 300px;
-  }
-
-  /* Swiper adjustments */
-  .swiper-container {
-    aspect-ratio: 4 / 3;
-    height: auto;
-  }
-
-  .swiper-slide img {
-    object-fit: contain;
-    max-height: 180px;
-  }
-
-  /* Product gallery fix */
-  .product-gallery {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Contact form spacing */
-  .contact-form {
-    padding: 0 10px;
-  }
-
+}
+/* Contact Form Mobile Adjustments */
   .contact-form form {
-    width: 100%;
-  }
-
-  /* Footer layout */
-  .footer-sections {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .footer-section {
-    width: 100%;
-    text-align: center;
-  }
-
-  .footer-section h4 {
-    border-bottom: none;
-  }
-
-  .social-icons a {
-    font-size: 18px;
-    margin: 0 5px;
-  }
-
-  footer,
-  .site-footer {
-    font-size: 14px;
     padding: 15px;
   }
-}
 
-/* Tiny screen tweaks */
-@media (max-width: 480px) {
-  .hero-overlay h1 {
-    font-size: 18px;
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px;
   }
 
-  .hero-overlay p {
-    font-size: 12px;
+  .contact-form button.btn {
+    padding: 8px;
   }
-
-  .products {
-    gap: 20px;
-  }
-
-  .footer-section {
-    width: 100%;
-  }
-}
-
 
   /* Footer */
   footer,
@@ -795,7 +724,4 @@ h2 {
 .product-gallery button.custom-swiper-button-next {
   right: 8px;
 }
-
-
-
 
