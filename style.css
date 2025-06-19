@@ -46,6 +46,7 @@ body::before {
 }
 
 /* Header */
+/* Header */
 .main-header {
   background-color: var(--header-bg);
   position: fixed;
@@ -57,7 +58,7 @@ body::before {
   flex-direction: column;
   gap: 10px;
   border-bottom: 2px solid var(--accent-color); /* Match footer’s separator */
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 2px 8px var(--shadow); /* Optional: adds subtle depth like footer */
 }
 
 .header-content {
@@ -73,7 +74,11 @@ body::before {
   font-size: 24px;
   font-weight: bold;
   gap: 10px;
-  color: var(--accent-color);
+  color: var(--text-color); /* Ensure logo text matches footer color */
+}
+
+.logo i {
+  color: var(--accent-color); /* Make the logo icon pop */
 }
 
 .navbar {
@@ -100,6 +105,7 @@ body::before {
 
 .nav-links li a:hover {
   background: var(--hover-color);
+  color: var(--accent-color); /* Hover matches footer style */
 }
 
 .menu-toggle {
@@ -108,7 +114,7 @@ body::before {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  
+  color: var(--text-color);
 }
 
 .search-bar input {
@@ -117,6 +123,7 @@ body::before {
   border: 1px solid #ccc;
   width: 200px;
 }
+
 
 /* Hero */
 .hero-slide {
@@ -396,23 +403,6 @@ footer,
   color: var(--text-color);
 }
 
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  .footer-sections {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .footer-section {
-    text-align: center;
-  }
-
-  .footer-section h4 {
-    border-bottom: none;
-  }
-}
-
 
 /* Headings */
 h2 {
@@ -579,12 +569,15 @@ h2 {
 
   /* Swiper Mobile Adjustments */
   .swiper-container {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2; /* Make it slightly shorter */
     height: auto;
+    margin-top: 100px; /* Push swiper lower to avoid header overlap */
+    max-height: 250px; /* Optional cap to prevent it from becoming too tall */
   }
 
   .swiper-slide img {
     object-fit: contain;
+    max-height: 250px; /* Control image height for better fit */
   }
 
   .hero-overlay {
