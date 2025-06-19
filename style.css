@@ -550,3 +550,98 @@ h2 {
     font-size: 18px;
     margin: 0 5px;
   }
+
+
+
+  .product-gallery {
+  width: 100%;
+  max-width: 250px; /* match product card width */
+  height: 220px; /* fixed height for consistent gallery size */
+  margin: 0 auto 15px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--background-overlay);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px var(--shadow);
+  position: relative;
+}
+
+.product-gallery .swiper-container {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+}
+
+.product-gallery .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-gallery .swiper-slide img {
+  width: auto;      /* let width adjust based on image ratio */
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;  /* show whole image nicely inside */
+}
+
+/* Override swiper buttons color for product gallery (optional) */
+.product-gallery .swiper-button-next,
+.product-gallery .swiper-button-prev {
+  color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.product-gallery .swiper-button-next:hover,
+.product-gallery .swiper-button-prev:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* Hide default swiper navigation buttons */
+.product-gallery .swiper-button-next,
+.product-gallery .swiper-button-prev {
+  display: none !important;
+}
+
+/* Style custom nav buttons */
+.product-gallery button.custom-swiper-button-prev,
+.product-gallery button.custom-swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--white);
+  border: none;
+  color: var(--primary-color);
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.product-gallery button.custom-swiper-button-prev:hover,
+.product-gallery button.custom-swiper-button-next:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* Position the buttons on left and right */
+.product-gallery button.custom-swiper-button-prev {
+  left: 8px;
+}
+
+.product-gallery button.custom-swiper-button-next {
+  right: 8px;
+}
+

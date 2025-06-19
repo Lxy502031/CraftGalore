@@ -39,28 +39,47 @@
 <a href="index.html" class="back-button">&#8592; Back to Home</a>
 
 <h2 style="text-align:center; margin-top: 60px;">Keychains</h2>
+
 <section class="products">
+
+  <!-- Product 1 -->
   <div class="product">
-    <img src="images/winnie.jpg" alt="Winnie the Pooh Keychain" />
+    <div class="product-gallery swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/winnie.jpg" alt="Winnie View 1" /></div>
+        <div class="swiper-slide"><img src="images/winnie_side.jpg" alt="Winnie Side View" /></div>
+        <div class="swiper-slide"><img src="images/winnie_back.jpg" alt="Winnie Back View" /></div>
+      </div>
+      <!-- Custom Navigation buttons -->
+      <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
     <div class="product-name">Winnie the Pooh Keychain</div>
     <div class="product-price">$28.00</div>
-    <button 
-      class="more-info-btn" 
-      data-product="product1"
-    >More Info</button>
+    <button class="more-info-btn" data-product="product1">More Info</button>
     <a href="https://payhip.com/b/RJ9US" class="payhip-add-to-cart-button" data-product="RJ9US" data-theme="green">Add to Cart</a>
   </div>
 
+  <!-- Product 2 -->
   <div class="product">
-    <img src="images/minion.jpg" alt="Minion Keychain" />
+    <div class="product-gallery swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/minion.jpg" alt="Minion View 1" /></div>
+        <div class="swiper-slide"><img src="images/minion_side.jpg" alt="Minion Side View" /></div>
+        <div class="swiper-slide"><img src="images/minion_back.jpg" alt="Minion Back View" /></div>
+      </div>
+      <!-- Custom Navigation buttons -->
+      <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
     <div class="product-name">Minion Keychain</div>
     <div class="product-price">$28.00</div>
-    <button 
-      class="more-info-btn" 
-      data-product="product2"
-    >More Info</button>
+    <button class="more-info-btn" data-product="product2">More Info</button>
     <a href="https://payhip.com/b/IYRUr" class="payhip-add-to-cart-button" data-product="IYRUr" data-theme="green">Add to Cart</a>
   </div>
+
 </section>
 
 <!-- Modal HTML -->
@@ -75,6 +94,24 @@
   <p>&copy; 2025 Crafts Galore. All rights reserved.</p>
 </footer>
 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
+
+<script>
+  // Initialize all Swipers inside products with custom buttons
+  document.querySelectorAll('.product-gallery').forEach(gallery => {
+    new Swiper(gallery, {
+      loop: true,
+      navigation: {
+        nextEl: gallery.querySelector('.custom-swiper-button-next'),
+        prevEl: gallery.querySelector('.custom-swiper-button-prev'),
+      },
+      slidesPerView: 1,
+      spaceBetween: 10
+    });
+  });
+</script>
+
 </body>
 </html>

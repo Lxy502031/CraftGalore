@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Keychains - Crafts Galore</title>
+  <title>Bags - Crafts Galore</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -40,8 +40,24 @@
 
 <h2 style="text-align:center; margin-top: 60px;">Bags</h2>
 <section class="products">
+
   <div class="product">
-    <img src="images/bag.jpg" alt="Classic Tote Bag" />
+    <div class="product-gallery swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/bag.jpg" alt="Classic Tote Bag - View 1" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/bag_side.jpg" alt="Classic Tote Bag - View 2" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/bag_inside.jpg" alt="Classic Tote Bag - View 3" />
+        </div>
+      </div>
+      <!-- Custom nav buttons -->
+      <button class="custom-swiper-button-prev">&#10094;</button>
+      <button class="custom-swiper-button-next">&#10095;</button>
+    </div>
     <div class="product-name">Classic Tote Bag</div>
     <div class="product-price">$50.00</div>
     <button 
@@ -52,7 +68,22 @@
   </div>
 
   <div class="product">
-    <img src="images/bag1.jpg" alt="Canvas Shoulder Bag" />
+    <div class="product-gallery swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/bag1.jpg" alt="Canvas Shoulder Bag - View 1" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/bag1_side.jpg" alt="Canvas Shoulder Bag - View 2" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/bag1_strap.jpg" alt="Canvas Shoulder Bag - Strap Detail" />
+        </div>
+      </div>
+      <!-- Custom nav buttons -->
+      <button class="custom-swiper-button-prev">&#10094;</button>
+      <button class="custom-swiper-button-next">&#10095;</button>
+    </div>
     <div class="product-name">Canvas Shoulder Bag</div>
     <div class="product-price">$50.00</div>
     <button 
@@ -61,6 +92,7 @@
     >More Info</button>
     <a href="https://payhip.com/b/0v4xr" class="payhip-add-to-cart-button" data-product="0v4xr" data-theme="green">Add to Cart</a>
   </div>
+
 </section>
 
 <!-- Modal HTML -->
@@ -76,5 +108,20 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Initialize Swiper galleries on this page
+  document.querySelectorAll('.product-gallery').forEach(gallery => {
+    new Swiper(gallery, {
+      loop: true,
+      navigation: {
+        nextEl: gallery.querySelector('.custom-swiper-button-next'),
+        prevEl: gallery.querySelector('.custom-swiper-button-prev'),
+      },
+      slidesPerView: 1,
+      spaceBetween: 10,
+    });
+  });
+</script>
 </body>
 </html>

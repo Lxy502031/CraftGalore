@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  new Swiper('.swiper-container', {
+  // Initialize global Swiper(s) (e.g. hero or other sliders)
+  new Swiper('.swiper-container:not(.product-gallery)', {
     loop: true,
     navigation: {
       nextEl: '.swiper-button-next',
@@ -49,8 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
       disableOnInteraction: false,
     }
   });
-});
 
+  // Initialize Swipers inside product galleries with custom buttons
+  document.querySelectorAll('.product-gallery').forEach(gallery => {
+    new Swiper(gallery, {
+      loop: true,
+      navigation: {
+        nextEl: gallery.querySelector('.custom-swiper-button-next'),
+        prevEl: gallery.querySelector('.custom-swiper-button-prev'),
+      },
+      slidesPerView: 1,
+      spaceBetween: 10
+    });
+  });
+});
 
 // Search functionality for navigating to sections/pages based on keywords
 
@@ -88,7 +101,6 @@ document.querySelector('.search-bar').addEventListener('submit', function (e) {
   }
 });
 
-
 const modal = document.getElementById('productModal');
 const modalContent = document.getElementById('modal-details');
 const closeBtn = document.querySelector('.close-btn');
@@ -99,7 +111,6 @@ const productInfo = {
   product3: `<h3>Classic Tote Bag</h3><p>Hand-crocheted tote bag with a spacious design — perfect for daily use or shopping.</p>`,
   product4: `<h3>Canvas Shoulder Bag</h3><p>Stylish crocheted shoulder bag, lightweight yet sturdy — great for casual outings.</p>`
 };
-
 
 document.querySelectorAll('.more-info-btn').forEach(button => {
   button.addEventListener('click', () => {
