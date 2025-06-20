@@ -6,39 +6,26 @@
   <link rel="stylesheet" href="https://identity.netlify.com/v1/netlify-identity-widget.css" />
 </head>
 <body>
-  <!-- This is the mount point for Netlify CMS -->
+  <!-- CMS mount point -->
   <div id="nc-root"></div>
 
-  <!-- Netlify CMS script -->
+  <!-- Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Identity configuration -->
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
         if (!user) {
-          window.netlifyIdentity.open(); // Auto open the login window
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
         }
       });
       window.netlifyIdentity.init();
     }
   </script>
-
-  <!-- Optional redirect after login -->
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-
 </body>
 </html>
