@@ -1,9 +1,10 @@
 backend:
-  name: git-gateway
-  branch: main  # or your default branch
+  name: github
+  repo: Lxy502031/CraftGalore  # your GitHub repo
+  branch: main
+  auth_scope: repo
 
-
-media_folder: "products/media"  # where uploaded images go
+media_folder: "products/media"
 public_folder: "/products/media"
 
 collections:

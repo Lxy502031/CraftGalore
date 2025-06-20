@@ -3,40 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <title>Content Manager</title>
-  <link rel="stylesheet" href="https://identity.netlify.com/v1/netlify-identity-widget.css" />
 </head>
 <body>
-  <!-- Netlify CMS will inject itself here -->
+  <!-- CMS mount point -->
   <div id="nc-root"></div>
 
-  <!-- Load Netlify CMS -->
+  <!-- Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-
-  <!-- Load Netlify Identity widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <script>
-    if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', user => {
-    console.log('Netlify Identity initialized', user);
-    if (!user) {
-      window.netlifyIdentity.on('login', () => {
-        document.location.href = '/admin/';
-      });
-    }
-  });
-  window.netlifyIdentity.on('error', err => {
-    console.error('Netlify Identity error:', err);
-  });
-  window.netlifyIdentity.init();
-}
-
-    // Initialize Netlify CMS
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.init();
-    } else {
-      console.error('Netlify Identity is not available');
-    }
-  </script>
 </body>
 </html>
