@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway
-  branch: main  # or your default branch
-  identity_url: https://peaceful-lily-1e98d1.netlify.app/.netlify/identity
-  gateway_url: https://peaceful-lily-1e98d1.netlify.app/.netlify/git
+  name: auth0
+  domain: YOUR_AUTH0_DOMAIN
+  client_id: YOUR_AUTH0_CLIENT_ID
+  auth_path: /.netlify/auth
+  logout_path: /.netlify/logout
+  site_url: https://your-site.netlify.app
 
 media_folder: "products/media"  # where uploaded images go
 public_folder: "/products/media"
