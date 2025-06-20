@@ -1,10 +1,7 @@
 backend:
-  name: auth0
-  domain: dev-k7mz5ihfru5dwvy5.us.auth0.com
-  client_id: fa8W9Nb29LgYNkoO5f5HvA2hqqonO2ZA
-  auth_path: /.netlify/auth
-  logout_path: /.netlify/logout
-  site_url: https://peaceful-lily-1e98d1.netlify.app
+  name: git-gateway
+  branch: main  # or your default branch
+
 
 media_folder: "products/media"  # where uploaded images go
 public_folder: "/products/media"

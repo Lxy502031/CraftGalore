@@ -6,20 +6,23 @@
   <link rel="stylesheet" href="https://identity.netlify.com/v1/netlify-identity-widget.css" />
 </head>
 <body>
-  <!-- CMS mount point -->
+  <!-- Netlify CMS will inject itself here -->
   <div id="nc-root"></div>
 
-  <!-- Netlify CMS -->
+  <!-- Load Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
-  <!-- Netlify Identity Widget -->
+  <!-- Load Netlify Identity widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
         if (!user) {
+          // If not logged in, show the login modal
+          window.netlifyIdentity.open();
           window.netlifyIdentity.on('login', () => {
+            // Once logged in, redirect to /admin/
             document.location.href = '/admin/';
           });
         }
