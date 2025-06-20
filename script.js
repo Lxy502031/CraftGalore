@@ -132,6 +132,11 @@ document.querySelectorAll('.more-info-btn').forEach(button => {
 });
 
 
+
+
 closeBtn.addEventListener('click', () => {
   modal.classList.add('hidden');
 });
+
+
+
