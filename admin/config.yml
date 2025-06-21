@@ -4,13 +4,13 @@ backend:
   branch: main
   auth_scope: repo
 
-media_folder: "products/media"
-public_folder: "/products/media"
+media_folder: "product/media"  # Corrected folder
+public_folder: "/product/media"
 
 collections:
   - name: "products"
     label: "Products"
-    folder: "products"
+    folder: "product"
     create: true
     slug: "{{slug}}"
     fields:
