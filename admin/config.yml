@@ -1,10 +1,8 @@
 backend:
-  name: github
-  repo: Lxy502031/CraftGalore  # your GitHub repo
+  name: git-gateway
   branch: main
-  auth_scope: repo
 
-media_folder: "product/media"  # Corrected folder
+media_folder: "product/media"
 public_folder: "/product/media"
 
 collections:
