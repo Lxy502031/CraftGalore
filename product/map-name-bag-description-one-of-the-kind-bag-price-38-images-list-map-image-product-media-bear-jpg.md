@@ -1,5 +1,5 @@
 ---
-name: bag
+name: keychain
 description: one of the kind bag
 price: 38
 images:
