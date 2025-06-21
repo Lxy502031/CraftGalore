@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize global Swiper(s) (e.g. hero or other sliders)
+  // Initialize global Swiper(s)
   new Swiper('.swiper-container:not(.product-gallery)', {
     loop: true,
     navigation: {
@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Initialize Swipers inside product galleries with custom buttons
   document.querySelectorAll('.product-gallery').forEach(gallery => {
     new Swiper(gallery, {
       loop: true,
@@ -63,11 +62,85 @@ document.addEventListener("DOMContentLoaded", () => {
       spaceBetween: 10
     });
   });
+
+  // Dynamic product rendering for category pages
+  const productListContainer = document.getElementById('dynamic-product-list');
+  const modal = document.getElementById('productModal');
+  const modalContent = document.getElementById('modal-details');
+  const closeBtn = document.querySelector('.close-btn');
+
+  if (productListContainer) {
+    // Get current category from page name
+    const currentPage = window.location.pathname;
+    let category = '';
+
+    if (currentPage.includes('keychains.html')) {
+      category = 'keychains';
+    } else if (currentPage.includes('bags.html')) {
+      category = 'bags';
+    }
+
+    if (category) {
+      fetch('products.json')
+        .then(response => response.json())
+        .then(products => {
+          const filteredProducts = products.filter(product => product.category === category);
+          productListContainer.innerHTML = '';
+
+          if (filteredProducts.length === 0) {
+            productListContainer.innerHTML = '<p>No products available in this category.</p>';
+            return;
+          }
+
+          filteredProducts.forEach(product => {
+            const card = document.createElement('a');
+            card.href = '#';
+            card.className = 'category-card';
+            card.dataset.slug = product.slug;
+
+            const imgSrc = (product.images && product.images.length > 0)
+              ? product.images[0].image
+              : 'placeholder.jpg';
+
+            card.innerHTML = `
+              <img src="${imgSrc}" alt="${product.name}" />
+              <h3>${product.name}</h3>
+              <p>$${product.price.toFixed(2)}</p>
+            `;
+
+            card.addEventListener('click', e => {
+              e.preventDefault();
+
+              modalContent.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
+                ${product.images && product.images.length > 0
+                  ? product.images.map(imgObj => `<img src="${imgObj.image}" style="max-width:100px; margin:5px;">`).join('')
+                  : ''}
+              `;
+
+              modal.classList.remove('hidden');
+            });
+
+            productListContainer.appendChild(card);
+          });
+        })
+        .catch(err => {
+          console.error('Error loading products.json:', err);
+          productListContainer.innerHTML = '<p>Failed to load products.</p>';
+        });
+    }
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  }
 });
 
-// Search functionality for navigating to sections/pages based on keywords
-
-// Mapping search keywords to actions
+// Search functionality
 const searchMap = {
   keychain: 'keychains.html',
   keychains: 'keychains.html',
@@ -79,7 +152,6 @@ const searchMap = {
   products: '#products'
 };
 
-// Listen for search form submission
 document.querySelector('.search-bar').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -89,54 +161,12 @@ document.querySelector('.search-bar').addEventListener('submit', function (e) {
     const destination = searchMap[searchTerm];
 
     if (destination.startsWith('#')) {
-      // Scroll to section if on the same page
       const section = document.querySelector(destination);
       if (section) section.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // Redirect to another page
       window.location.href = destination;
     }
   } else {
     alert('No matching section found.');
   }
 });
-
-const modal = document.getElementById('productModal');
-const modalContent = document.getElementById('modal-details');
-const closeBtn = document.querySelector('.close-btn');
-
-const productInfo = {
-  keychains: {
-    minion: `<h3>Minion Keychain</h3><p>Handmade. Perfect for backpacks and gifts.</p>`,
-    winnie: `<h3>Winnie the Pooh Keychain</h3><p>Durable. Great for daily use or gifting.</p>`,
-    bird: `<h3>Bird Keychain</h3><p>Handmade keychain, eco-friendly and stylish — ideal for bags or everyday use.</p>`
-  },
-  bags: {
-    tote: `<h3>Classic Tote Bag</h3><p>Hand-crocheted tote bag with a spacious design — perfect for daily use or shopping.</p>`,
-    canvas: `<h3>Canvas Shoulder Bag</h3><p>Stylish crocheted shoulder bag, lightweight yet sturdy — great for casual outings.</p>`
-  }
-};
-document.querySelectorAll('.more-info-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const category = button.getAttribute('data-category');
-    const product = button.getAttribute('data-product');
-
-    if (productInfo[category] && productInfo[category][product]) {
-      modalContent.innerHTML = productInfo[category][product];
-    } else {
-      modalContent.innerHTML = '<p>Info not found.</p>';
-    }
-
-    modal.classList.remove('hidden');
-  });
-});
-
-
-
-
-closeBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
-});
-
-
-

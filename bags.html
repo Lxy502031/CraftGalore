@@ -42,54 +42,9 @@
 
   <h2 style="text-align:center; margin-top: 60px;">Bags</h2>
 
-  <section class="products">
-
-    <div class="product">
-      <div class="product-gallery swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="product/media/bag.jpg" alt="Classic Tote Bag - View 1" />
-          </div>
-          <div class="swiper-slide">
-            <img src="product/media/bag_side.jpg" alt="Classic Tote Bag - View 2" />
-          </div>
-          <div class="swiper-slide">
-            <img src="product/media/bag_inside.jpg" alt="Classic Tote Bag - View 3" />
-          </div>
-        </div>
-        <!-- Custom nav buttons -->
-        <button class="custom-swiper-button-prev">&#10094;</button>
-        <button class="custom-swiper-button-next">&#10095;</button>
-      </div>
-      <div class="product-name">Classic Tote Bag</div>
-      <div class="product-price">$50.00</div>
-      <button class="more-info-btn" data-category="bags" data-product="tote">More Info</button>
-      <a href="https://payhip.com/b/PUJC3" class="payhip-add-to-cart-button" data-product="PUJC3" data-theme="green">Add to Cart</a>
-    </div>
-
-    <div class="product">
-      <div class="product-gallery swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="product/media/bag1.jpg" alt="Canvas Shoulder Bag - View 1" />
-          </div>
-          <div class="swiper-slide">
-            <img src="product/media/bag1_side.jpg" alt="Canvas Shoulder Bag - View 2" />
-          </div>
-          <div class="swiper-slide">
-            <img src="product/media/bag1_strap.jpg" alt="Canvas Shoulder Bag - Strap Detail" />
-          </div>
-        </div>
-        <!-- Custom nav buttons -->
-        <button class="custom-swiper-button-prev">&#10094;</button>
-        <button class="custom-swiper-button-next">&#10095;</button>
-      </div>
-      <div class="product-name">Canvas Shoulder Bag</div>
-      <div class="product-price">$50.00</div>
-      <button class="more-info-btn" data-category="bags" data-product="canvas">More Info</button>
-      <a href="https://payhip.com/b/0v4xr" class="payhip-add-to-cart-button" data-product="0v4xr" data-theme="green">Add to Cart</a>
-    </div>
-
+  <!-- Dynamic Product List -->
+  <section class="products" id="dynamic-product-list">
+    <p>Loading products...</p>
   </section>
 
   <!-- Modal HTML -->
@@ -106,20 +61,6 @@
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    // Initialize Swiper galleries on this page
-    document.querySelectorAll('.product-gallery').forEach(gallery => {
-      new Swiper(gallery, {
-        loop: true,
-        navigation: {
-          nextEl: gallery.querySelector('.custom-swiper-button-next'),
-          prevEl: gallery.querySelector('.custom-swiper-button-prev'),
-        },
-        slidesPerView: 1,
-        spaceBetween: 10,
-      });
-    });
-  </script>
 
 </body>
 
