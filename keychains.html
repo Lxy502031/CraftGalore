@@ -42,64 +42,9 @@
 
   <h2 style="text-align:center; margin-top: 60px;">Keychains</h2>
 
-  <section class="products">
-
-    <!-- Product 1 -->
-    <div class="product">
-      <div class="product-gallery swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="product/media/winnie.jpg" alt="Winnie View 1" /></div>
-          <div class="swiper-slide"><img src="product/media/winnie_side.jpg" alt="Winnie Side View" /></div>
-          <div class="swiper-slide"><img src="product/media/winnie_back.jpg" alt="Winnie Back View" /></div>
-        </div>
-        <!-- Custom Navigation buttons -->
-        <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
-      </div>
-
-      <div class="product-name">Winnie the Pooh Keychain</div>
-      <div class="product-price">$28.00</div>
-      <button class="more-info-btn" data-category="keychains" data-product="winnie">More Info</button>
-      <a href="https://payhip.com/b/RJ9US" class="payhip-add-to-cart-button" data-product="RJ9US" data-theme="green">Add to Cart</a>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="product">
-      <div class="product-gallery swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="product/media/minion.jpg" alt="Minion View 1" /></div>
-          <div class="swiper-slide"><img src="product/media/minion_side.jpg" alt="Minion Side View" /></div>
-          <div class="swiper-slide"><img src="product/media/minion_back.jpg" alt="Minion Back View" /></div>
-        </div>
-        <!-- Custom Navigation buttons -->
-        <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
-      </div>
-
-      <div class="product-name">Minion Keychain</div>
-      <div class="product-price">$28.00</div>
-      <button class="more-info-btn" data-category="keychains" data-product="minion">More Info</button>
-      <a href="https://payhip.com/b/IYRUr" class="payhip-add-to-cart-button" data-product="IYRUr" data-theme="green">Add to Cart</a>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="product">
-      <div class="product-gallery swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="product/media/bird1.jpg" alt="Bird View 1" /></div>
-          <div class="swiper-slide"><img src="product/media/bird2.jpg" alt="Bird Side View" /></div>
-        </div>
-        <!-- Custom Navigation buttons -->
-        <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
-      </div>
-
-      <div class="product-name">Bird Keychain</div>
-      <div class="product-price">$28.00</div>
-      <button class="more-info-btn" data-category="keychains" data-product="bird">More Info</button>
-      <a href="https://payhip.com/b/vtzRb" class="payhip-add-to-cart-button" data-product="vtzRb" data-theme="green">Add to Cart</a>
-    </div>
-
+  <!-- Dynamic product section -->
+  <section class="products" id="dynamic-keychain-list">
+    <!-- Products will be loaded here by JS -->
   </section>
 
   <!-- Modal HTML -->
@@ -118,17 +63,84 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 
+  <!-- Dynamic Product Loading for Keychains -->
   <script>
-    // Initialize all Swipers inside products with custom buttons
-    document.querySelectorAll('.product-gallery').forEach(gallery => {
-      new Swiper(gallery, {
-        loop: true,
-        navigation: {
-          nextEl: gallery.querySelector('.custom-swiper-button-next'),
-          prevEl: gallery.querySelector('.custom-swiper-button-prev'),
-        },
-        slidesPerView: 1,
-        spaceBetween: 10
+    document.addEventListener("DOMContentLoaded", () => {
+      const productListContainer = document.getElementById('dynamic-keychain-list');
+      const modal = document.getElementById('productModal');
+      const modalContent = document.getElementById('modal-details');
+      const closeBtn = document.querySelector('.close-btn');
+
+      fetch('products.json')
+        .then(response => response.json())
+        .then(products => {
+          const keychains = products.filter(product => product.category.toLowerCase() === 'keychains');
+          productListContainer.innerHTML = '';
+
+          keychains.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product';
+
+            const imgSrc = (product.images && product.images.length > 0)
+              ? product.images[0].image
+              : 'placeholder.jpg';
+
+            const swiperSlides = product.images && product.images.length > 0
+              ? product.images.map(img => `<div class="swiper-slide"><img src="${img.image}" alt="${product.name}" /></div>`).join('')
+              : `<div class="swiper-slide"><img src="placeholder.jpg" alt="${product.name}" /></div>`;
+
+            card.innerHTML = `
+              <div class="product-gallery swiper-container">
+                <div class="swiper-wrapper">
+                  ${swiperSlides}
+                </div>
+                <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">$${product.price.toFixed(2)}</div>
+              <button class="more-info-btn" data-name="${product.name}" data-description="${product.description}" data-price="${product.price}">More Info</button>
+              <a href="${product.payhipLink}" class="payhip-add-to-cart-button" data-product="${product.payhipProductId}" data-theme="green">Add to Cart</a>
+            `;
+
+            productListContainer.appendChild(card);
+
+            // Initialize swiper for each product gallery
+            new Swiper(card.querySelector('.product-gallery'), {
+              loop: true,
+              navigation: {
+                nextEl: card.querySelector('.custom-swiper-button-next'),
+                prevEl: card.querySelector('.custom-swiper-button-prev'),
+              },
+              slidesPerView: 1,
+              spaceBetween: 10
+            });
+          });
+
+          // Add modal functionality
+          document.querySelectorAll('.more-info-btn').forEach(button => {
+            button.addEventListener('click', () => {
+              const name = button.getAttribute('data-name');
+              const description = button.getAttribute('data-description');
+              const price = button.getAttribute('data-price');
+
+              modalContent.innerHTML = `
+                <h3>${name}</h3>
+                <p>${description}</p>
+                <p><strong>Price:</strong> $${parseFloat(price).toFixed(2)}</p>
+              `;
+
+              modal.classList.remove('hidden');
+            });
+          });
+        })
+        .catch(err => {
+          console.error('Error loading products.json:', err);
+          productListContainer.innerHTML = '<p>Failed to load products.</p>';
+        });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
       });
     });
   </script>
