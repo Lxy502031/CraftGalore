@@ -95,18 +95,18 @@
   },
 
   {
-    "name": "keychain",
+    "name": "Bear Keychain",
     "category": "",
     "price": 38,
     "images": [
       
-        "/[object Object]"
+        "/product/media/bear.jpg"
       
     ],
-    "description": "one of the kind bag",
+    "description": "One of a kind bear keychain",
     "payhipLink": "",
     "content": "",
-    "slug": ""
+    "slug": "bear-keychain"
   }
 
 ]
