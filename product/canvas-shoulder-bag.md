@@ -1,4 +1,5 @@
 ---
+permalink: false
 name: "Canvas Shoulder Bag"
 category: "bags"
 price: 50.00

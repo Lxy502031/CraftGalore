@@ -1,4 +1,5 @@
 ---
+permalink: false
 name: "Minion Keychain"
 category: "keychains"
 price: 28.00

@@ -1,4 +1,5 @@
 ---
+permalink: false
 name: "Classic Tote Bag"
 category: "bags"
 price: 50.00

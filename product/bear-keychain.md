@@ -1,4 +1,5 @@
 ---
+permalink: false
 name: Bear Keychain
 description: One of a kind bear keychain
 price: 38

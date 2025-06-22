@@ -12,15 +12,12 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["keychains", "bags"] }
-      - { label: "Price", name: "price", widget: "number" }
-      - label: "Images"
-        name: "images"
-        widget: "list"
-        allow_add: true
-        fields:
-          - { label: "Image Path", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Payhip Link", name: "payhipLink", widget: "string" }  # <-- Add this!
-      - { label: "Slug", name: "slug", widget: "string" }
+  - { label: "Name", name: "name", widget: "string" }
+  - { label: "Category", name: "category", widget: "string" }
+  - { label: "Price", name: "price", widget: "number" }
+  - { label: "Images", name: "images", widget: "list", field: { label: Image, name: image, widget: string } }
+  - { label: "Description", name: "description", widget: "text" }
+  - { label: "Payhip Link", name: "payhipLink", widget: "string" }
+  - { label: "Slug", name: "slug", widget: "string" }
+  - { label: "Permalink", name: "permalink", widget: "hidden", default: false }
+

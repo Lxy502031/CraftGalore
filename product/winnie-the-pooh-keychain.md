@@ -1,4 +1,5 @@
 ---
+permalink: false
 name: "Winnie the Pooh Keychain"
 category: "keychains"
 price: 28.00
