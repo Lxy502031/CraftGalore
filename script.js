@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.dataset.slug = product.slug;
 
             const imgSrc = (product.images && product.images.length > 0)
-              ? product.images[0].image
+              ? product.images[0]
               : 'placeholder.jpg';
 
             card.innerHTML = `
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${product.description}</p>
                 <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
                 ${product.images && product.images.length > 0
-                  ? product.images.map(imgObj => `<img src="${imgObj.image}" style="max-width:100px; margin:5px;">`).join('')
+                  ? product.images.map(imgPath => `<img src="${imgPath}" style="max-width:100px; margin:5px;">`).join('')
                   : ''}
               `;
 
