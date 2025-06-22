@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Filter buttons functionality
-  document.querySelectorAll('.filter-btn').forEach(button => {
+    document.querySelectorAll('.filter-btn').forEach(button => {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
       renderProducts(category);
