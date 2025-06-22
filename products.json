@@ -67,5 +67,23 @@
     "payhipLink": "RJ9US",
     "content": "Winnie the Pooh Keychain – Cute, collectible, and practical accessory for your keys or bag.",
     "slug": "winnie-the-pooh-keychain"
-  }
+  },
+
+
+
+  {
+  "name": "Bear Keychain",
+  "category": "keychains",
+  "price": 38,
+  "images": [
+    "product/media/bear.jpg"
+  ],
+  "description": "One of a kind bear keychain",
+  "payhipLink": "YOUR_PAYHIP_CODE_HERE",
+  "slug": "bear-keychain"
+}
+
+
+
+  
 ]

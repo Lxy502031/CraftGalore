@@ -2,17 +2,25 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "product/media"
-public_folder: "/product/media"
+media_folder: "static/product/media"    # Change to static folder
+public_folder: "/product/media"         # Keep the URL path same
 
 collections:
   - name: "products"
     label: "Products"
-    folder: "product"
+    folder: "content/products"        # or wherever your products markdown/json files live
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["keychains", "bags"] }
       - { label: "Price", name: "price", widget: "number" }
-      - { label: "Images", name: "images", widget: "list", allow_add: true, fields: [{label: "Image", name: "image", widget: "image"}] }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        allow_add: true
+        fields:
+          - { label: "Image Path", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Payhip Link", name: "payhipLink", widget: "string" }  # <-- Add this!
+      - { label: "Slug", name: "slug", widget: "string" }

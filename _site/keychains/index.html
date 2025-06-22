@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keychains - Crafts Galore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://payhip.com/payhip.js"></script>
+  <script>var PayhipConfig = { enableCart: true };</script>
+</head>
+
+<body>
+
+  <header class="main-header">
+    <div class="header-left">
+      <div class="logo">
+        <i class="fas fa-gem"></i>
+        <span>Crafts Galore</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <form class="search-bar" id="searchForm">
+        <input type="text" id="productSearch" placeholder="Search products..." />
+      </form>
+
+      <nav class="navbar">
+        <button class="menu-toggle">&#9776;</button>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#products">Product</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <a href="index.html" class="back-button">&#8592; Back to Home</a>
+
+  <h2 style="text-align:center; margin-top: 60px;">Keychains</h2>
+
+  <!-- Dynamic product section -->
+  <section class="products" id="dynamic-keychain-list">
+    <!-- Products will be loaded here by JS -->
+  </section>
+
+  <!-- Modal HTML -->
+  <div id="productModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="modal-details"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Crafts Galore. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Dynamic Product Loading for Keychains -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const productListContainer = document.getElementById('dynamic-keychain-list');
+      const modal = document.getElementById('productModal');
+      const modalContent = document.getElementById('modal-details');
+      const closeBtn = document.querySelector('.close-btn');
+
+      fetch('products.json')
+        .then(response => response.json())
+        .then(products => {
+          const keychains = products.filter(product => product.category.toLowerCase() === 'keychains');
+          productListContainer.innerHTML = '';
+
+          keychains.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product';
+
+            const imgSrc = (product.images && product.images.length > 0)
+              ? product.images[0].image
+              : 'placeholder.jpg';
+
+            const swiperSlides = product.images && product.images.length > 0
+              ? product.images.map(img => `<div class="swiper-slide"><img src="${img.image}" alt="${product.name}" /></div>`).join('')
+              : `<div class="swiper-slide"><img src="placeholder.jpg" alt="${product.name}" /></div>`;
+
+            card.innerHTML = `
+              <div class="product-gallery swiper-container">
+                <div class="swiper-wrapper">
+                  ${swiperSlides}
+                </div>
+                <button class="custom-swiper-button-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="custom-swiper-button-next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">$${product.price.toFixed(2)}</div>
+              <button class="more-info-btn" data-name="${product.name}" data-description="${product.description}" data-price="${product.price}">More Info</button>
+              <a href="${product.payhipLink}" class="payhip-add-to-cart-button" data-product="${product.payhipProductId}" data-theme="green">Add to Cart</a>
+            `;
+
+            productListContainer.appendChild(card);
+
+            // Initialize swiper for each product gallery
+            new Swiper(card.querySelector('.product-gallery'), {
+              loop: true,
+              navigation: {
+                nextEl: card.querySelector('.custom-swiper-button-next'),
+                prevEl: card.querySelector('.custom-swiper-button-prev'),
+              },
+              slidesPerView: 1,
+              spaceBetween: 10
+            });
+          });
+
+          // Add modal functionality
+          document.querySelectorAll('.more-info-btn').forEach(button => {
+            button.addEventListener('click', () => {
+              const name = button.getAttribute('data-name');
+              const description = button.getAttribute('data-description');
+              const price = button.getAttribute('data-price');
+
+              modalContent.innerHTML = `
+                <h3>${name}</h3>
+                <p>${description}</p>
+                <p><strong>Price:</strong> $${parseFloat(price).toFixed(2)}</p>
+              `;
+
+              modal.classList.remove('hidden');
+            });
+          });
+        })
+        .catch(err => {
+          console.error('Error loading products.json:', err);
+          productListContainer.innerHTML = '<p>Failed to load products.</p>';
+        });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

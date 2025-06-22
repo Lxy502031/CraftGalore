@@ -1,0 +1,112 @@
+
+[
+
+  {
+    "name": "Classic Tote Bag",
+    "category": "bags",
+    "price": 50,
+    "images": [
+      
+        "/product/media/bag.jpg",
+      
+        "/product/media/bag_side.jpg",
+      
+        "/product/media/bag_inside.jpg"
+      
+    ],
+    "description": "A stylish and practical classic tote bag suitable for daily use. Spacious, durable, and perfect for carrying your essentials.",
+    "payhipLink": "https://payhip.com/b/PUJC3",
+    "content": "",
+    "slug": ""
+  },
+
+  {
+    "name": "Canvas Shoulder Bag",
+    "category": "bags",
+    "price": 50,
+    "images": [
+      
+        "/product/media/bag1.jpg",
+      
+        "/product/media/bag1_side.jpg",
+      
+        "/product/media/bag1_strap.jpg"
+      
+    ],
+    "description": "A durable canvas shoulder bag with adjustable strap and roomy interior. Ideal for casual outings or work.",
+    "payhipLink": "https://payhip.com/b/0v4xr",
+    "content": "",
+    "slug": ""
+  },
+
+  {
+    "name": "Winnie the Pooh Keychain",
+    "category": "keychains",
+    "price": 28,
+    "images": [
+      
+        "/product/media/winnie.jpg",
+      
+        "/product/media/winnie_side.jpg",
+      
+        "/product/media/winnie_back.jpg"
+      
+    ],
+    "description": "Adorable Winnie the Pooh keychain with multiple views, perfect for fans and collectors.",
+    "payhipLink": "https://payhip.com/b/RJ9US",
+    "content": "",
+    "slug": ""
+  },
+
+  {
+    "name": "Minion Keychain",
+    "category": "keychains",
+    "price": 28,
+    "images": [
+      
+        "/product/media/minion.jpg",
+      
+        "/product/media/minion_side.jpg",
+      
+        "/product/media/minion_back.jpg"
+      
+    ],
+    "description": "Fun Minion keychain featuring bright colors and multiple angles for an eye-catching look.",
+    "payhipLink": "https://payhip.com/b/IYRUr",
+    "content": "",
+    "slug": ""
+  },
+
+  {
+    "name": "Bird Keychain",
+    "category": "keychains",
+    "price": 28,
+    "images": [
+      
+        "/product/media/bird1.jpg",
+      
+        "/product/media/bird2.jpg"
+      
+    ],
+    "description": "Elegant bird-themed keychain with detailed design and beautiful side views.",
+    "payhipLink": "https://payhip.com/b/vtzRb",
+    "content": "",
+    "slug": ""
+  },
+
+  {
+    "name": "keychain",
+    "category": "",
+    "price": 38,
+    "images": [
+      
+        "/[object Object]"
+      
+    ],
+    "description": "one of the kind bag",
+    "payhipLink": "",
+    "content": "",
+    "slug": ""
+  }
+
+]

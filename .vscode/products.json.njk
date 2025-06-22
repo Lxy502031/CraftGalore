@@ -1,0 +1,26 @@
+---
+permalink: /products.json
+eleventyExcludeFromCollections: true
+pagination:
+  data: collections.products
+  size: 1000
+---
+
+[
+{% for product in pagination.items %}
+  {
+    "name": "{{ product.data.name }}",
+    "category": "{{ product.data.category }}",
+    "price": {{ product.data.price }},
+    "images": [
+      {% for img in product.data.images %}
+        "/{{ img }}"{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ],
+    "description": "{{ product.data.description }}",
+    "payhipLink": "{{ product.data.payhipLink }}",
+    "content": "{{ product.data.content }}",
+    "slug": "{{ product.data.slug }}"
+  }{% if not loop.last %},{% endif %}
+{% endfor %}
+]
