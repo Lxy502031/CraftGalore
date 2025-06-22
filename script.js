@@ -121,7 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
     card.className = 'category-card';
     card.dataset.slug = product.slug;
 
-    const imgSrc = (product.images && product.images.length > 0) ? product.images[0] : 'placeholder.jpg';
+    // Prepend /static/ for Netlify hosted images
+    const imgSrc = (product.images && product.images.length > 0) ? '/static/' + product.images[0] : 'placeholder.jpg';
     const payhipId = extractPayhipId(product.payhipLink);
 
     card.innerHTML = `
@@ -144,9 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3>${product.name}</h3>
         <p>${product.description}</p>
         <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
-        ${product.images && product.images.length > 0
-          ? product.images.map(imgPath => `<img src="${imgPath}" style="max-width:100px; margin:5px;">`).join('')
-          : ''}
+        ${
+          product.images && product.images.length > 0
+            ? product.images.map(imgPath => `<img src="/static/${imgPath}" style="max-width:100px; margin:5px;">`).join('')
+            : ''
+        }
       `;
       modal.classList.remove('hidden');
     });
