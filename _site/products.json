@@ -107,6 +107,21 @@
     "payhipLink": "",
     "content": "",
     "slug": "bear-keychain"
+  },
+
+  {
+    "name": "Red Bag",
+    "category": "bags",
+    "price": 50,
+    "images": [
+      
+        "/[object Object]"
+      
+    ],
+    "description": "It is a beautiful red bag",
+    "payhipLink": "gqae4",
+    "content": "",
+    "slug": "red-bag"
   }
 
 ]
