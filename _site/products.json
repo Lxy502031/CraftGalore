@@ -112,13 +112,28 @@
   {
     "name": "Red Bag",
     "category": "bags",
-    "price": 50,
+    "price": 49,
     "images": [
       
         "/[object Object]"
       
     ],
-    "description": "It is a beautiful red bag",
+    "description": "Its a one of the kind bag",
+    "payhipLink": "gqae4",
+    "content": "",
+    "slug": "red-bag"
+  },
+
+  {
+    "name": "Red Bag",
+    "category": "bags",
+    "price": 49,
+    "images": [
+      
+        "/[object Object]"
+      
+    ],
+    "description": "Its a one of the kind bag",
     "payhipLink": "gqae4",
     "content": "",
     "slug": "red-bag"
