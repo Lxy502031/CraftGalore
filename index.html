@@ -8,11 +8,6 @@
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://payhip.com/payhip.js"></script>
-  <script>
-  var PayhipConfig = { enableCart: true };
-</script>
-
 </head>
 
 <body>
@@ -68,8 +63,6 @@
 </div>
 
 <section class="categories" id="dynamic-product-list">
-  
-
   <!-- All filtered products will be shown here dynamically -->
 </section>
 
@@ -128,10 +121,14 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!-- FIX: Add leading slash -->
-<script src="/script.js" defer></script>
+<!-- Payhip scripts moved here -->
+<script src="https://payhip.com/payhip.js"></script>
+<script>
+  var PayhipConfig = { enableCart: true };
+</script>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/script.js" defer></script>
 
 </body>
 </html>
