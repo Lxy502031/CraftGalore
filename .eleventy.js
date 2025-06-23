@@ -8,8 +8,8 @@ module.exports = function (eleventyConfig) {
  // your images folder
 
   eleventyConfig.addCollection("products", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("./product/*.md");
-  });
+  return collectionApi.getFilteredByGlob("content/products/*.md");
+});
 
   return {
     dir: {
