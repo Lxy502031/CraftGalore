@@ -1,6 +1,6 @@
 ---
 name: Doll
-category: Dolls
+category: dolls
 price: 100
 images:
   - /product/media/doll.jpg
