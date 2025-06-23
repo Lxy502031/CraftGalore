@@ -1,6 +1,6 @@
 ---
 name: Lucky Cat
-category: keychain
+category: Dolls
 price: 44
 images:
   - /product/media/lucky-cat.jpg
