@@ -233,6 +233,26 @@
     "description": "It is a lucky cat",
     "payhipLink": "WFBsA",
     "slug": "lucky-cat"
+  },
+
+  {
+    "name": "Doll",
+    "category": "Dolls",
+    "price": 100,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/doll.jpg"
+          
+        
+      
+    ],
+    "description": "It is a doll",
+    "payhipLink": "NEVql",
+    "slug": "doll"
   }
 
 ]
