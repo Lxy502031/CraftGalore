@@ -213,6 +213,26 @@
     "description": "It is a beautiful cat bag",
     "payhipLink": "M0kzi",
     "slug": "cat-bag"
+  },
+
+  {
+    "name": "Lucky Cat",
+    "category": "keychain",
+    "price": 44,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/lucky-cat.jpg"
+          
+        
+      
+    ],
+    "description": "It is a lucky cat",
+    "payhipLink": "WFBsA",
+    "slug": "lucky-cat"
   }
 
 ]
