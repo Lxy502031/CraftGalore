@@ -1,15 +1,14 @@
 module.exports = function (eleventyConfig) {
-  // Tell Eleventy to copy these files/folders to the output without processing
+  // Copy static assets
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("script.js");
-  eleventyConfig.addPassthroughCopy({ "product/media": "static/product/media" });
   eleventyConfig.addPassthroughCopy("products.json");
-  eleventyConfig.addPassthroughCopy("static");
- // your images folder
+  eleventyConfig.addPassthroughCopy("static"); // ✅ This copies all static assets including images
 
+  // Product collection
   eleventyConfig.addCollection("products", function (collectionApi) {
-  return collectionApi.getFilteredByGlob("content/products/*.md");
-});
+    return collectionApi.getFilteredByGlob("content/product/*.md");
+  });
 
   return {
     dir: {

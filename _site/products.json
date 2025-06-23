@@ -7,16 +7,29 @@
     "price": 50,
     "images": [
       
-        "static/product/media/bag.jpg",
-      
-        "static/product/media/bag_side.jpg",
-      
-        "static/product/media/bag_inside.jpg"
+        
+          
+          
+          
+            "/static/product/media/bag.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/bag_side.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/bag_inside.jpg"
+          
+        
       
     ],
     "description": "A stylish and practical classic tote bag suitable for daily use. Spacious, durable, and perfect for carrying your essentials.",
-    "payhipLink": "PUJC3",
-    "content": "",
+    "payhipLink": "https://payhip.com/b/PUJC3",
     "slug": ""
   },
 
@@ -26,16 +39,29 @@
     "price": 50,
     "images": [
       
-        "static/product/media/bag1.jpg",
-      
-        "static/product/media/bag1_side.jpg",
-      
-        "static/product/media/bag1_strap.jpg"
+        
+          
+          
+          
+            "/static/product/media/bag1.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/bag1_side.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/bag1_strap.jpg"
+          
+        
       
     ],
     "description": "A durable canvas shoulder bag with adjustable strap and roomy interior. Ideal for casual outings or work.",
-    "payhipLink": "0v4xr",
-    "content": "",
+    "payhipLink": "https://payhip.com/b/0v4xr",
     "slug": ""
   },
 
@@ -45,16 +71,29 @@
     "price": 28,
     "images": [
       
-        "static/product/media/winnie.jpg",
-      
-        "static/product/media/winnie_side.jpg",
-      
-        "static/product/media/winnie_back.jpg"
+        
+          
+          
+          
+            "/static/product/media/winnie.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/winnie_side.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/winnie_back.jpg"
+          
+        
       
     ],
     "description": "Adorable Winnie the Pooh keychain with multiple views, perfect for fans and collectors.",
-    "payhipLink": "RJ9US",
-    "content": "",
+    "payhipLink": "https://payhip.com/b/RJ9US",
     "slug": ""
   },
 
@@ -64,14 +103,29 @@
     "price": 28,
     "images": [
       
-        "static/product/media/minion.jpg",
-        "static/product/media/minion_side.jpg",
-        "static/product/media/minion_back.jpg"
+        
+          
+          
+          
+            "/static/product/media/minion.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/minion_side.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/minion_back.jpg"
+          
+        
       
     ],
     "description": "Fun Minion keychain featuring bright colors and multiple angles for an eye-catching look.",
-    "payhipLink": "IYRUr",
-    "content": "",
+    "payhipLink": "https://payhip.com/b/IYRUr",
     "slug": ""
   },
 
@@ -81,29 +135,45 @@
     "price": 28,
     "images": [
       
-        "static/product/media/bird1.jpg",
-      
-        "static/product/media/bird2.jpg"
+        
+          
+          
+          
+            "/static/product/media/bird1.jpg",
+          
+        
+          
+          
+          
+            "/static/product/media/bird2.jpg"
+          
+        
       
     ],
     "description": "Elegant bird-themed keychain with detailed design and beautiful side views.",
-    "payhipLink": "vtzRb",
-    "content": "",
+    "payhipLink": "https://payhip.com/b/vtzRb",
     "slug": ""
   },
 
   {
-  "name": "Bear Keychain",
-  "category": "keychains",
-  "price": 38,
-  "images": [
-    "static/product/media/bear.jpg"
-  ],
-  "description": "One of a kind bear keychain",
-  "payhipLink": "6Ne2Q",
-  "content": "",
-  "slug": "bear-keychain"
-},
+    "name": "Bear Keychain",
+    "category": "",
+    "price": 38,
+    "images": [
+      
+        
+          
+          
+          
+            "/static/product/media/bear.jpg"
+          
+        
+      
+    ],
+    "description": "One of a kind bear keychain",
+    "payhipLink": "",
+    "slug": "bear-keychain"
+  },
 
   {
     "name": "Red Bag",
@@ -111,15 +181,38 @@
     "price": 49,
     "images": [
       
-        "static/product/media/red-bag.jpg"
+        
+          
+          
+          
+            "/static/product/media/red-bag.jpg"
+          
+        
       
     ],
     "description": "Its a one of the kind bag",
     "payhipLink": "gqae4",
-    "content": "",
     "slug": "red-bag"
-  }
+  },
 
-  
+  {
+    "name": "Cat Bag",
+    "category": "Bag",
+    "price": 48,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/cat-bag.jpg"
+          
+        
+      
+    ],
+    "description": "It is a beautiful cat bag",
+    "payhipLink": "M0kzi",
+    "slug": "cat-bag"
+  }
 
 ]

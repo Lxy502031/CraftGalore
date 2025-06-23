@@ -1,0 +1,36 @@
+---
+permalink: products.json
+eleventyExcludeFromCollections: true
+---
+
+[
+{% for product in collections.products %}
+  {
+    "name": {{ product.data.name | jsonify }},
+    "category": {{ product.data.category | default: "" | jsonify }},
+    "price": {{ product.data.price | default: 0 }},
+    "images": [
+      {% if product.data.images and product.data.images.size > 0 %}
+        {% for img in product.data.images %}
+          {% if img == nil or img == blank %}
+            {% continue %}
+          {% endif %}
+          {% assign imgPath = img %}
+          {% if imgPath contains "/static/product/media/" %}
+            {{ imgPath | jsonify }}{% if forloop.last == false %},{% endif %}
+          {% elsif imgPath contains "product/media/" %}
+            {{ "/static/" | append: imgPath | jsonify }}{% if forloop.last == false %},{% endif %}
+          {% else %}
+            {{ "/static/product/media/" | append: imgPath | jsonify }}{% if forloop.last == false %},{% endif %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        []
+      {% endif %}
+    ],
+    "description": {{ product.data.description | default: "" | jsonify }},
+    "payhipLink": {{ product.data.payhipLink | default: "" | jsonify }},
+    "slug": {{ product.data.slug | default: "" | jsonify }}
+  }{% if forloop.last == false %},{% endif %}
+{% endfor %}
+]
