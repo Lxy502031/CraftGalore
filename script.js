@@ -116,6 +116,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function showCategory(category) {
+  document.getElementById('categoryPreview').style.display = 'none';
+  document.getElementById('productSection').style.display = 'block';
+
+  renderProducts(category); // already filters and renders dynamically
+}
+
+function goBackToCategories() {
+  document.getElementById('productSection').style.display = 'none';
+  document.getElementById('categoryPreview').style.display = 'flex'; // or block
+}
+
   function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'category-card';
@@ -169,36 +181,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Search functionality adapted for categories and sections
-  const searchBar = document.querySelector('.search-bar');
-  if (searchBar) {
-    searchBar.addEventListener('submit', function (e) {
-      e.preventDefault();
+const searchBar = document.querySelector('.search-bar');
+if (searchBar) {
+  const categories = ['keychains', 'bags', 'dolls'];
 
-      const input = this.querySelector('input');
-      if (!input) return;
+  searchBar.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-      const searchTerm = input.value.trim().toLowerCase();
+    const input = this.querySelector('input');
+    if (!input) return;
 
-      // Scroll or filter by search term
-      if (searchTerm === 'keychain' || searchTerm === 'keychains') {
-        renderProducts('keychains');
-        productListContainer.scrollIntoView({ behavior: 'smooth' });
-      } else if (searchTerm === 'bag' || searchTerm === 'bags') {
-        renderProducts('bags');
-        productListContainer.scrollIntoView({ behavior: 'smooth' });
-      } else if (searchTerm === 'contact') {
-        const section = document.querySelector('#contact');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
-      } else if (searchTerm === 'home') {
-        const section = document.querySelector('#home');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
-      } else if (searchTerm === 'product' || searchTerm === 'products') {
-        renderProducts('all');
-        productListContainer.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        alert('No matching section found.');
-      }
-    });
-  }
+    const searchTerm = input.value.trim().toLowerCase();
+
+    if (searchTerm === 'product' || searchTerm === 'products') {
+      renderProducts('all');
+      productListContainer.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    const matchedCategory = categories.find(cat => 
+      cat === searchTerm || cat === searchTerm + 's' || cat + 's' === searchTerm
+    );
+
+    if (matchedCategory) {
+      renderProducts(matchedCategory);
+      productListContainer.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    const section = document.querySelector(`#${searchTerm}`);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    alert('No matching section found.');
+  });
+}
+
+
 });
