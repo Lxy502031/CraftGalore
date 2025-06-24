@@ -1,6 +1,6 @@
 ---
 name: Cat Bag
-category: Bag
+category: bags
 price: 50
 images:
   - /product/media/cat-bag.jpg
