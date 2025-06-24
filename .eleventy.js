@@ -3,7 +3,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("script.js");
   eleventyConfig.addPassthroughCopy("products.json");
-  eleventyConfig.addPassthroughCopy("static"); // ✅ This copies all static assets including images
+  eleventyConfig.addPassthroughCopy("static");
+  eleventyConfig.addPassthroughCopy("admin");
 
   // Product collection
   eleventyConfig.addCollection("products", function (collectionApi) {
