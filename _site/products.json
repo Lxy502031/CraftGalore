@@ -157,7 +157,7 @@
 
   {
     "name": "Bear Keychain",
-    "category": "",
+    "category": "keychains",
     "price": 38,
     "images": [
       
@@ -171,7 +171,7 @@
       
     ],
     "description": "One of a kind bear keychain",
-    "payhipLink": "",
+    "payhipLink": "6Ne2Q",
     "slug": "bear-keychain"
   },
 
@@ -197,7 +197,7 @@
 
   {
     "name": "Cat Bag",
-    "category": "Bag",
+    "category": "bags",
     "price": 50,
     "images": [
       
