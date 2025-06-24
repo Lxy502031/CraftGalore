@@ -349,7 +349,7 @@ body::before {
   text-align: center;
   text-decoration: none;
   background-color: #cce7ff ;
-  color: white;
+  color: black;
   padding: 30px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px var(--shadow);
