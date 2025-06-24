@@ -119,10 +119,17 @@
 <!-- Product Details Modal -->
 <div id="productModal" class="modal hidden">
   <div class="modal-content">
-    <button class="close-btn" aria-label="Close modal">&times;</button>
+    <button id="productModalClose" class="close-btn" aria-label="Close modal">&times;</button>
     <div id="modal-details"></div>
   </div>
 </div>
+
+<!-- Image enlarge modal -->
+<div id="imageModal" class="modal hidden">
+  <span id="imageModalClose" class="close-btn">&times;</span>
+  <img id="imageModalImg" src="" alt="Enlarged product" />
+</div>
+
 
 <!-- Payhip scripts moved here -->
 <script src="https://payhip.com/payhip.js"></script>

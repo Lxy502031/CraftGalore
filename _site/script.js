@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[1] : payhipLink;
   }
 
+  
+
   // Menu toggle
   const toggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
@@ -60,9 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Modal elements
-  const modal = document.getElementById('productModal');
+  const productModal = document.getElementById('productModal');
   const modalContent = document.getElementById('modal-details');
-  const closeBtn = document.querySelector('.close-btn');
+  const productModalClose = document.getElementById('productModalClose');
+
+  const imageModal = document.getElementById('imageModal');
+  const imageModalImg = document.getElementById('imageModalImg');
+  const imageModalClose = document.getElementById('imageModalClose');
 
   // Single container for all products
   const productListContainer = document.getElementById('dynamic-product-list');
@@ -117,16 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showCategory(category) {
-  document.getElementById('categoryPreview').style.display = 'none';
-  document.getElementById('productSection').style.display = 'block';
+    document.getElementById('categoryPreview').style.display = 'none';
+    document.getElementById('productSection').style.display = 'block';
 
-  renderProducts(category); // already filters and renders dynamically
-}
+    renderProducts(category); // already filters and renders dynamically
+  }
 
-function goBackToCategories() {
-  document.getElementById('productSection').style.display = 'none';
-  document.getElementById('categoryPreview').style.display = 'flex'; // or block
-}
+  function goBackToCategories() {
+    document.getElementById('productSection').style.display = 'none';
+    document.getElementById('categoryPreview').style.display = 'flex'; // or block
+  }
 
   function createProductCard(product) {
     const card = document.createElement('div');
@@ -137,7 +143,7 @@ function goBackToCategories() {
     const payhipId = extractPayhipId(product.payhipLink);
 
     card.innerHTML = `
-      <img src="${imgSrc}" alt="${product.name}" />
+      <img src="${imgSrc}" alt="${product.name}" class="product-image" style="cursor:pointer;" />
       <h3>${product.name}</h3>
       <p>$${product.price.toFixed(2)}</p>
       <button class="more-info-btn">More Info</button>
@@ -157,67 +163,93 @@ function goBackToCategories() {
         <p>${product.description}</p>
         <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
         ${product.images && product.images.length > 0
-          ? product.images.map(imgPath => `<img src="${imgPath}" style="max-width:100px; margin:5px;">`).join('')
+          ? product.images.map(imgPath => `<img src="${imgPath}" style="max-width:100px; margin:5px; cursor:pointer;" class="modal-thumb">`).join('')
           : ''}
       `;
-      modal.classList.remove('hidden');
+      productModal.classList.remove('hidden');
+
+      // Add click event to images in modal to enlarge
+      modalContent.querySelectorAll('.modal-thumb').forEach(img => {
+        img.addEventListener('click', () => {
+          imageModalImg.src = img.src;
+          imageModal.classList.remove('hidden');
+        });
+      });
+    });
+
+    // Clicking product image opens image modal
+    card.querySelector('.product-image').addEventListener('click', () => {
+      imageModalImg.src = imgSrc;
+      imageModal.classList.remove('hidden');
     });
 
     return card;
   }
 
-  // Close modal event
-  if (closeBtn && modal) {
-    closeBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
+  // Close product details modal
+  if (productModalClose && productModal) {
+    productModalClose.addEventListener('click', () => {
+      productModal.classList.add('hidden');
+    });
+  }
+
+  // Close image modal
+  if (imageModalClose && imageModal) {
+    imageModalClose.addEventListener('click', () => {
+      imageModal.classList.add('hidden');
+    });
+
+    // Also close image modal on clicking outside the image
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.classList.add('hidden');
+      }
     });
   }
 
   // Filter buttons functionality
-    document.querySelectorAll('.filter-btn').forEach(button => {
+  document.querySelectorAll('.filter-btn').forEach(button => {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
       renderProducts(category);
     });
   });
 
-const searchBar = document.querySelector('.search-bar');
-if (searchBar) {
-  const categories = ['keychains', 'bags', 'dolls'];
+  const searchBar = document.querySelector('.search-bar');
+  if (searchBar) {
+    const categories = ['keychains', 'bags', 'dolls'];
 
-  searchBar.addEventListener('submit', function (e) {
-    e.preventDefault();
+    searchBar.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    const input = this.querySelector('input');
-    if (!input) return;
+      const input = this.querySelector('input');
+      if (!input) return;
 
-    const searchTerm = input.value.trim().toLowerCase();
+      const searchTerm = input.value.trim().toLowerCase();
 
-    if (searchTerm === 'product' || searchTerm === 'products') {
-      renderProducts('all');
-      productListContainer.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
+      if (searchTerm === 'product' || searchTerm === 'products') {
+        renderProducts('all');
+        productListContainer.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
 
-    const matchedCategory = categories.find(cat => 
-      cat === searchTerm || cat === searchTerm + 's' || cat + 's' === searchTerm
-    );
+      const matchedCategory = categories.find(cat =>
+        cat === searchTerm || cat === searchTerm + 's' || cat + 's' === searchTerm
+      );
 
-    if (matchedCategory) {
-      renderProducts(matchedCategory);
-      productListContainer.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
+      if (matchedCategory) {
+        renderProducts(matchedCategory);
+        productListContainer.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
 
-    const section = document.querySelector(`#${searchTerm}`);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
+      const section = document.querySelector(`#${searchTerm}`);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
 
-    alert('No matching section found.');
-  });
-}
-
-
+      alert('No matching section found.');
+    });
+  }
 });
