@@ -1,6 +1,6 @@
 ---
 name: Lucky Cat
-category: doll
+category: dolls
 price: 44
 images:
   - /product/media/lucky-cat.jpg
