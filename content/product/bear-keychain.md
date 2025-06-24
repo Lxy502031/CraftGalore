@@ -1,6 +1,6 @@
 ---
 name: Bear Keychain
-category: keychain
+category: keychains
 price: 38
 images:
   - product/media/bear.jpg
