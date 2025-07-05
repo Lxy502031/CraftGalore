@@ -23,6 +23,6 @@ collections:
           name: "image"
           widget: "image"
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Payhip Link", name: "payhipLink", widget: "string" required: false  }
-      - { label: "Slug", name: "slug", widget: "string" required: false  }
+      - { label: "Payhip Link", name: "payhipLink", widget: "string", required: false  }
+      - { label: "Slug", name: "slug", widget: "string", required: false  }
       - { label: "Permalink", name: "permalink", widget: "hidden", default: false }
