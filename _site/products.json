@@ -132,7 +132,7 @@
   {
     "name": "Bird Keychain",
     "category": "keychains",
-    "price": 28,
+    "price": 50,
     "images": [
       
         
@@ -152,27 +152,7 @@
     ],
     "description": "Elegant bird-themed keychain with detailed design and beautiful side views.",
     "payhipLink": "https://payhip.com/b/vtzRb",
-    "slug": ""
-  },
-
-  {
-    "name": "Bear Keychain",
-    "category": "keychains",
-    "price": 38,
-    "images": [
-      
-        
-          
-          
-          
-            "/static/product/media/bear.jpg"
-          
-        
-      
-    ],
-    "description": "One of a kind bear keychain",
-    "payhipLink": "6Ne2Q",
-    "slug": "bear-keychain"
+    "slug": "bird-keychain"
   },
 
   {
@@ -259,6 +239,26 @@
     "description": "It is a doll",
     "payhipLink": "NEVql",
     "slug": "doll"
+  },
+
+  {
+    "name": "Bear",
+    "category": "dolls",
+    "price": 49,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/bear.jpg"
+          
+        
+      
+    ],
+    "description": "it is a bear",
+    "payhipLink": "P7ngI",
+    "slug": "bear"
   }
 
 ]
