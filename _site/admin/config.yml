@@ -10,7 +10,8 @@ collections:
     label: "Products"
     folder: "content/product"
     create: true
-    slug: "{{slug}}"       # This ensures the filename is the slug (e.g. cat-bag.md)
+    slug: "{{fields.name | slugify}}"
+       # This ensures the filename is the slug (e.g. cat-bag.md)
     fields:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Category", name: "category", widget: "string" }
@@ -23,6 +24,6 @@ collections:
           name: "image"
           widget: "image"
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Payhip Link", name: "payhipLink", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Payhip Link", name: "payhipLink", widget: "string", required: false  }
+      - { label: "Slug", name: "slug", widget: "string", required: false  }
       - { label: "Permalink", name: "permalink", widget: "hidden", default: false }

@@ -259,6 +259,64 @@
     "description": "it is a bear",
     "payhipLink": "P7ngI",
     "slug": "bear"
+  },
+
+  {
+    "name": "Monkey Doll",
+    "category": "dolls",
+    "price": 55,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/monkey2.png",
+          
+        
+          
+          
+          
+            "/static//product/media/monkey2.png",
+          
+        
+          
+          
+          
+            "/static//product/media/monkey3.png",
+          
+        
+          
+          
+          
+            "/static//product/media/monkey4.png"
+          
+        
+      
+    ],
+    "description": "It is a monkey doll",
+    "payhipLink": "https://payhip.com/b/gk7i1",
+    "slug": "monkey-doll"
+  },
+
+  {
+    "name": "Girl doll",
+    "category": "dolls",
+    "price": 50,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/doll.png"
+          
+        
+      
+    ],
+    "description": "it is a doll",
+    "payhipLink": "https://payhip.com/b/AO8u3",
+    "slug": "girl-doll"
   }
 
 ]
