@@ -1,6 +1,6 @@
 ---
 name: Monkey doll 2
-category: doll
+category: dolls
 price: 55
 images:
   - /product/media/screenshot-2025-07-24-191345.png
