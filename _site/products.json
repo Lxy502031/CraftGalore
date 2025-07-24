@@ -317,6 +317,44 @@
     "description": "it is a doll",
     "payhipLink": "https://payhip.com/b/AO8u3",
     "slug": "girl-doll"
+  },
+
+  {
+    "name": "Monkey doll 2",
+    "category": "dolls",
+    "price": 55,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/screenshot-2025-07-24-191345.png",
+          
+        
+          
+          
+          
+            "/static//product/media/screenshot-2025-07-24-191529.png",
+          
+        
+          
+          
+          
+            "/static//product/media/screenshot-2025-07-24-191540.png",
+          
+        
+          
+          
+          
+            "/static//product/media/screenshot-2025-07-24-191555.png"
+          
+        
+      
+    ],
+    "description": "It is a monkey with a banana",
+    "payhipLink": "https://payhip.com/b/POVFA",
+    "slug": "monkey-doll-2"
   }
 
 ]
