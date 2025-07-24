@@ -221,6 +221,84 @@ body::before {
   background-color: #f57f17;
 }
 
+
+.framed-intro {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.split-frame {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fbeec1, #f8d5c2);
+}
+
+.split-left,
+.split-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('/static/product/media/bag.jpg'); /* change to any image you want */
+  background-size: cover;
+  background-position: center;
+  transition: transform 1s ease, clip-path 1s ease;
+  z-index: 2;
+}
+
+.split-left {
+  left: 0;
+  clip-path: inset(0 50% 0 0);
+}
+.split-right {
+  right: 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+.frame-overlay {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #333;
+}
+
+.frame-overlay h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.frame-overlay p {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+body.split-trigger .split-left {
+  transform: translateX(-100%);
+}
+body.split-trigger .split-right {
+  transform: translateX(100%);
+}
+body.split-trigger .hidden-below {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+}
+
+/* Hide main content initially */
+.hidden-below {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+
+
+
 /* Product Grid */
 .products {
   display: flex;
