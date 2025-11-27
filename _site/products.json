@@ -359,7 +359,7 @@
 
   {
     "name": "Plant",
-    "category": "Decoration",
+    "category": "decoration",
     "price": 50,
     "images": [
       
