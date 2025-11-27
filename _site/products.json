@@ -355,6 +355,26 @@
     "description": "It is a monkey with a banana",
     "payhipLink": "https://payhip.com/b/POVFA",
     "slug": "monkey-doll-2"
+  },
+
+  {
+    "name": "Plant",
+    "category": "Decoration",
+    "price": 50,
+    "images": [
+      
+        
+          
+          
+          
+            "/static//product/media/plant.jpg"
+          
+        
+      
+    ],
+    "description": "It is a plant decoration",
+    "payhipLink": "pTjzB",
+    "slug": "plant"
   }
 
 ]
