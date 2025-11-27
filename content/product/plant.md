@@ -1,6 +1,6 @@
 ---
 name: Plant
-category: decoration
+category: decorations
 price: 50
 images:
   - /product/media/plant.jpg
