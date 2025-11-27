@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchBar = document.querySelector('.search-bar');
   if (searchBar) {
-    const categories = ['keychains', 'bags', 'dolls'];
+    const categories = ['keychains', 'bags', 'dolls','Decorations'];
 
     searchBar.addEventListener('submit', function (e) {
       e.preventDefault();
